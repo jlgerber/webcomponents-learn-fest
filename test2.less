@@ -1,0 +1,237 @@
+// out: ./test2.css,sourcemap: false, compress: false
+
+@import url(https://fonts.googleapis.com/css?family=Hind+Vadodara:400,700);
+
+@grey: #292c34;
+@dark-grey: darken(@grey,6%);
+@med-grey: lighten(@grey,8%);
+@light-grey: desaturate(lighten(spin(@med-grey,-6%),5%),5%);
+
+@icon-clr: rgb(200,200,200);
+@title-clr: rgb(200,200,200);
+@title-clr-light: lighten(@title-clr,10%);
+@accent-color: spin(rgba(96, 169, 252, 1),-10%);
+@text-color: rgb(20,20,20);
+
+@boxshadow-gag: rgba(255, 255, 255, 0.08) 0px 0px 0px 1px inset,
+rgba(0, 0, 0, 0.2) 0px 0px 0px 1px;
+
+
+
+body,html {
+  height:100%;
+  width:100%;
+  margin:auto;
+  font-family: 'Hind Vadodara', sans-serif;
+}
+
+#main-div {
+  display:flex;
+  flex-direction: column;
+  height:100%;
+  width:100%;
+  background-color:@light-grey;
+}
+/**
+ * Navigation Bar
+ */
+
+.navbar {
+   position: fixed;
+   top: 0;
+   left:0;
+   z-index: 9999;
+   width:100%;
+   height:40px; //60px;
+   background-color: @dark-grey;
+
+   // flexbox components
+   display:flex;
+   align-content:stretch;
+   align-items:stretch;
+   flex-direction:column;
+
+   .navbar-title {
+    color: @title-clr;
+  }
+
+ .navbar-center-content {
+    display:flex;
+    padding-left: 16px;
+    padding-right:16px;
+    height:20px;//30px;
+    align-items:baseline;
+    flex-direction:row;
+  }
+
+  h2.navbar-title {
+    margin-top:0;
+  }
+
+  h4.navbar-title {
+    margin-left:15px;
+    margin-top:10px;
+    color: @accent-color;
+  }
+
+  select.pulldown {
+    background: @icon-clr;
+    color:@text-color;
+    border-radius:5px;
+    margin-top:10px;
+  }
+}
+/**
+ * search bar
+ */
+
+ div.under-navbar {
+   height: 40px;
+   width:100%;
+ }
+
+.content {
+  /*padding-left: 20px;
+  padding-right:20px;*/
+  display:flex;
+  flex:1;
+  flex-direction: column;
+
+  background-color:@light-grey;
+}
+
+div.spacer {
+  flex:1;
+  width: 30px;
+  height:100%;
+}
+
+.table-frame {
+  flex: 1;
+  box-shadow: @boxshadow-gag;
+}
+.query-frame {
+  display:flex;
+  height:30px;
+  padding:9px 15px;
+  flex-direction:row;
+  justify-content:space-between;
+  background-color:@med-grey;
+  border-bottom: 1px solid @grey;
+  box-shadow: @boxshadow-gag;
+}
+.query-frame .query-grp {
+  display:flex;
+  flex: 1 1 auto;
+  justify-content:space-between;
+  /*padding-top: 5px;
+  padding-bottom:5px;*/
+  border-radius:5px;
+  align-items:center;
+  background-color:@icon-clr;
+}
+.query-frame .query-grp .query-input {
+  padding-left:20px;
+  background-color:transparent;
+  color: @text-color;
+}
+.query-frame .query-grp .query-input:focus {
+  outline:0;
+}
+
+i.btn {
+  color: @icon-clr;
+}
+button.btn-icon {
+  background-color: Transparent;
+   background-repeat:no-repeat;
+   border:none;
+   cursor:pointer;
+   overflow: hidden;
+   outline:none;
+}
+
+.query-grp button {
+  height:24px;
+  width:24px;
+  padding:0px;
+  margin-right: 5px;
+  background-color: Transparent;
+   background-repeat:no-repeat;
+   border:none;
+   cursor:pointer;
+   overflow: hidden;
+   outline:none;
+}
+
+.query-grp button.btn-sm {
+  width:20px;
+}
+.query-grp button .subtle:active,.sm:active,.btn:active     {
+  color:@accent-color;
+};
+.query-grp button i {
+  text-align: left;
+}
+.query-grp button .subtle {
+  color:grey;
+}
+.query-input {
+  flex: 1;
+  border:none;
+}
+
+/**
+ * Table
+ */
+
+.table-frame table tr.tr-header {
+  // box-shadow:@boxshadow-gag;
+  // display: block;
+}
+
+@border-color:  rgba(0,0,0,0.2);
+table {
+  border-collapse: collapse;
+
+}
+th.fx {
+  background-color:lighten(@dark-grey,15%);
+  border-bottom: 1px solid  darken(rgb(105, 105, 105),5%);
+
+}
+
+th.main-header {
+  border-top: 1px solid  darken(rgb(105, 105, 105),5%);
+  border-bottom: 1px solid @border-color;
+  box-sizing:border-box;
+  border:1px solid @border-color;
+  color: darken(@title-clr,20%);
+}
+td,th {
+  text-align:left;
+  padding-left:18px;
+  padding-right:18px;
+}
+td {
+  color: @title-clr;
+  font-size: .9em;
+  border-left:1px solid @border-color;
+  border-right:1px solid @border-color;
+
+
+}
+tr:nth-child(odd) {
+  background-color: darken(@light-grey,4%);
+}
+
+tr.tr-header:hover {
+  background-color: inherit;
+}
+tr:hover {
+  background-color: fadeout(@accent-color,60%);
+}
+.md-9 {
+  font-size:16px!important;
+  border:0;
+}

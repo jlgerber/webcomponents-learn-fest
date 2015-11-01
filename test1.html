@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script>
+      var TestEl = document.registerElement("test-el");
+      TestEl.prototype.sayHi = function(){return "Hello World. This is a test.";};
+      document.body.appendChild(new TestEl);
+      var tst = document.querySelector('test-el');
+      tst.textContent = tst.sayHi();
+    </script>
+  </body>
+</html>
