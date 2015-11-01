@@ -17,7 +17,11 @@
 rgba(0, 0, 0, 0.2) 0px 0px 0px 1px;
 
   @border-color:  rgba(0,0,0,0.2);
-
+.inputPlaceholderText(@color:grey){
+  &::-webkit-input-placeholder, &-mod-placeholder {
+    color:@color;
+  }
+}
 body,html {
   height:100%;
   width:100%;
@@ -124,9 +128,12 @@ body,html {
       display:flex;
       flex: 1 1 auto;
       justify-content:space-between;
-      border-radius:5px;
+      border-radius:13px;
       align-items:center;
       background-color:@icon-clr;
+      box-shadow: 0 3px 5px 2px fadeout(black,30%) inset, //,
+      //0 1px 2px -0px fadeout(white,30%),
+      0 -1px 1px  fadeout(black,20%);
 
       .query-input {
          flex: 1;
@@ -134,7 +141,11 @@ body,html {
          padding-left:20px;
          background-color:transparent;
          color: @text-color;
+
+        .inputPlaceholderText(grey);
+
         }
+
        .query-input:focus {
          outline:0;
        }
@@ -176,33 +187,7 @@ body,html {
 
     table {
       border-collapse: collapse;
-
-      th.fx {
-        background-color:lighten(@dark-grey,15%);
-        border-bottom: 1px solid  darken(rgb(105, 105, 105),5%);
-
-      }
-
-      th.main-header {
-        border-top: 1px solid  darken(rgb(105, 105, 105),5%);
-        border-bottom: 1px solid @border-color;
-        box-sizing:border-box;
-        border:1px solid @border-color;
-        color: darken(@title-clr,20%);
-      }
-      td,th {
-        text-align:left;
-        padding-left:18px;
-        padding-right:18px;
-      }
-      td {
-        color: @title-clr;
-        font-size: .9em;
-        border-left:1px solid @border-color;
-        border-right:1px solid @border-color;
-
-
-      }
+      // table row css
       tr:nth-child(odd) {
         background-color: darken(@light-grey,4%);
       }
@@ -213,6 +198,34 @@ body,html {
       tr:hover {
         background-color: fadeout(@accent-color,60%);
       }
+      // table headers
+      th.fx {
+        background-color:lighten(@dark-grey,15%);
+        border-bottom: 1px solid  darken(rgb(105, 105, 105),5%);
+      }
+
+      th.main-header {
+        border-top: 1px solid  darken(rgb(105, 105, 105),5%);
+        border-bottom: 1px solid @border-color;
+        box-sizing:border-box;
+        border:1px solid @border-color;
+        color: darken(@title-clr,20%);
+      }
+
+      td,th {
+        text-align:left;
+        padding-left:18px;
+        padding-right:18px;
+      }
+      // table cells
+      td {
+        color: @title-clr;
+        font-size: .9em;
+        border-left:1px solid @border-color;
+        border-right:1px solid @border-color;
+      }
+
+      // making the + a bit smaller.
       .md-9 {
         font-size:16px!important;
         border:0;
